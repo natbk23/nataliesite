@@ -8,7 +8,12 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - text: Data Viz
+        menu: 
+          - text: "Tidy Tuesday 1"
+            href: TidyTuesday1.qmd
+          - text: "Tidy Tuesday 2"
+            href: TidyTuesday2.qmd
 
 format:
   html:
