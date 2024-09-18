@@ -1,6 +1,6 @@
 ---
 title: "Natalie Roston"
-image: profile.jpeg
+image: nataliesite/profile.jpeg
 ---
 
 I am passionate about creating user-centric experiences and products that solve real-world problems. With a focus on empathy, I have worked on a variety of collaborative projects that have allowed me to continuously expand the boundaries of my heuristics. I invite you to explore some of my work in the "projects" tab and see how I have applied my skills to create impactful designs.
