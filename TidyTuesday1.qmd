@@ -1,17 +1,19 @@
 ---
-title: "Super Mario Kart"
+title: "College Financial Data"
 description: |
-  Analysis of Super Mario Kart data from TidyTuesday
+  Analysis of student income data from TidyTuesday
 author: Natalie Roston
 date: September 18, 2024
 format: html
 ---
 
-```{r}
-install.packages("tidytuesdayR")
-tuesdata <- tidytuesdayR::tt_load(2024, week = 37)
-college_admissions <- tuesdata$college_admissions
-# 
-# library(ggplot2)
-# ggplot2()
+```         
 ```
+
+Sources:
+
+Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. [https://tidytues.day](https://tidytues.day/)
+
+<https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-02-06>
+
+<https://whc.unesco.org/en/list>
