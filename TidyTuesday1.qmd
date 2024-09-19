@@ -5,36 +5,39 @@ description: |
 author: Natalie Roston
 date: September 18, 2024
 format: html
+execute:
+  warning: false
+  message: false
 ---
 
-```{{r}}
+```{r}
 library(dplyr)
-install.packages("tidytuesdayR")
+
 tuesdata <- tidytuesdayR::tt_load('2023-08-22')
 population <- tuesdata$population
 desired_variables <- population %>%
-+     select(year, coa_name, refugees, asylum_seekers)
+     select(year, coa_name, refugees, asylum_seekers)
 germany_data <- desired_variables %>%
-+     filter(coa_name == "Germany")
+     filter(coa_name == "Germany")
 summary_germany <- germany_data %>%
-+     group_by(year) %>%
-+     summarize(
-+         total_refugees = sum(refugees, na.rm = TRUE),
-+         total_asylum_seekers = sum(asylum_seekers, na.rm = TRUE),
-+         .groups = 'drop'
-+     )
+     group_by(year) %>%
+     summarize(
+         total_refugees = sum(refugees, na.rm = TRUE),
+         total_asylum_seekers = sum(asylum_seekers, na.rm = TRUE),
+         .groups = 'drop'
+    )
 
 library(ggplot2)
 ggplot(summary_germany, aes(x = year)) +
-+     geom_line(aes(y = total_refugees, color = "Refugees"), size = 1) +
-+     geom_line(aes(y = total_asylum_seekers, color = "Asylum Seekers"), size = 1) +
-+     labs(
-+         title = "Total Refugees and Asylum Seekers in Germany by Year",
-+         x = "Year",
-+         y = "Count",
-+         color = "Legend"
-+     ) +
-+     theme_minimal()
+     geom_line(aes(y = total_refugees, color = "Refugees"), size = 1) +
+     geom_line(aes(y = total_asylum_seekers, color = "Asylum Seekers"), size = 1) +
+     labs(
+         title = "Total Refugees and Asylum Seekers in Germany by Year",
+         x = "Year",
+         y = "Count",
+         color = "Legend"
+     ) +
+     theme_minimal()
 ```
 
 Sources:
@@ -47,4 +50,21 @@ Data Science Learning Community (2024). Tidy Tuesday: A weekly social data proje
 
 -   Data from the United Nations Relief and Works Agency for Palestine Refugees in the Near East (UNRWA), specifically for registered Palestine refugees under UNRWA’s mandate.
 
--   Data from the Internal Displacement Monitoring Centre (IDMC) on people displaced within their country due to conflict or violence.
+-   Data from the Internal Displacement Monitoring Centre (IDMC) on people displaced within their country due to conflict or violence
+
+<!--
+```{r}
+library(dplyr)
+library(tidytuesdayR)
+tuesdata <- tidytuesdayR::tt_load('2023-08-22')
+population <- tuesdata$population
+
+
+desired_variables <- population %>%
+     select(year, coa_name, refugees, asylum_seekers)
+```
+
+-->
+
+
+

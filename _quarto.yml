@@ -10,9 +10,9 @@ website:
         text: Home
       - text: Data Viz
         menu: 
-          - text: "Tidy Tuesday 1"
+          - text: "Refugees"
             href: TidyTuesday1.qmd
-          - text: "Tidy Tuesday 2"
+          - text: "World Heritage Sites"
             href: TidyTuesday2.qmd
 
 format:
