@@ -41,6 +41,10 @@ Sources:
 
 Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. [https://tidytues.day](https://tidytues.day/)
 
-<https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-02-06>
+<https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-08-22>
 
-<https://whc.unesco.org/en/list>
+-   Data from UNHCR’s annual statistical activities dating back to 1951.
+
+-   Data from the United Nations Relief and Works Agency for Palestine Refugees in the Near East (UNRWA), specifically for registered Palestine refugees under UNRWA’s mandate.
+
+-   Data from the Internal Displacement Monitoring Centre (IDMC) on people displaced within their country due to conflict or violence.
