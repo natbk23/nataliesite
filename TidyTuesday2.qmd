@@ -1,1 +1,36 @@
+---
+title: "World Heritage Sites"
+description: |
+  Analysis of UNESCO world heritage sites from TidyTuesday
+author: Natalie Roston
+date: September 18, 2024
+format: html
+---
 
+```{r}
+install.packages("tidytuesdayR")
+tuesdata <- tidytuesdayR::tt_load('2024-02-06')
+heritage <- tuesdata$heritage
+
+library(tidyverse)
+data_long <- heritage %>%
++     pivot_longer(cols = c(`2004`, `2022`), names_to = "year", values_to = "value")
+
+library(ggplot2)
+ggplot(data_long, aes(x = year, y = value, color = country, group = country)) +
++     geom_line(size = 1) +
++     geom_point(size = 3) +
++     labs(title = "Country Values in 2004 and 2022",
++          x = "Year",
++          y = "Value") +
++     scale_color_manual(values = c("Norway" = "blue", "Denmark" = "red", "Sweden" = "green")) +
++     theme_minimal()
+```
+
+Sources:
+
+Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. [https://tidytues.day](https://tidytues.day/)
+
+<https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-02-06>
+
+<https://whc.unesco.org/en/list>

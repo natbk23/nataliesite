@@ -12,5 +12,19 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "TidyTuesday2.html",
+    "href": "TidyTuesday2.html",
+    "title": "World Heritage Sites",
+    "section": "",
+    "text": "# install.packages(\"tidytuesdayR\")\n# tuesdata &lt;- tidytuesdayR::tt_load('2024-02-06')\n# heritage &lt;- tuesdata$heritage\n# \n# library(tidyverse)\n# data_long &lt;- heritage %&gt;%\n# +     pivot_longer(cols = c(`2004`, `2022`), names_to = \"year\", values_to = \"value\")\n# \n# library(ggplot2)\n# ggplot(data_long, aes(x = year, y = value, color = country, group = country)) +\n# +     geom_line(size = 1) +\n# +     geom_point(size = 3) +\n# +     labs(title = \"Country Values in 2004 and 2022\",\n# +          x = \"Year\",\n# +          y = \"Value\") +\n# +     scale_color_manual(values = c(\"Norway\" = \"blue\", \"Denmark\" = \"red\", \"Sweden\" = \"green\")) +\n# +     theme_minimal()\n\nSources:\nData Science Learning Community (2024). Tidy Tuesday: A weekly social data project. https://tidytues.day\nhttps://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-02-06\nhttps://whc.unesco.org/en/list"
+  },
+  {
+    "objectID": "TidyTuesday1.html",
+    "href": "TidyTuesday1.html",
+    "title": "College Financial Data",
+    "section": "",
+    "text": "Sources:\nData Science Learning Community (2024). Tidy Tuesday: A weekly social data project. https://tidytues.day\nhttps://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-02-06\nhttps://whc.unesco.org/en/list"
   }
 ]

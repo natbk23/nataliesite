@@ -1,0 +1,17 @@
+---
+title: "Super Mario Kart"
+description: |
+  Analysis of Super Mario Kart data from TidyTuesday
+author: Natalie Roston
+date: September 18, 2024
+format: html
+---
+
+```{r}
+install.packages("tidytuesdayR")
+tuesdata <- tidytuesdayR::tt_load(2024, week = 37)
+college_admissions <- tuesdata$college_admissions
+# 
+# library(ggplot2)
+# ggplot2()
+```
