@@ -1,0 +1,18 @@
+---
+title: "Project 2"
+description: |
+  Text Analysis
+author: Natalie Roston
+date: September 18, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidytuesdayR)
+tuesdata <- tidytuesdayR::tt_load('2021-04-20')
+netflix <- tuesdata$netflix
+
+```
