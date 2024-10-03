@@ -12,7 +12,32 @@ execute:
 
 ```{r}
 library(tidytuesdayR)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+
 tuesdata <- tidytuesdayR::tt_load('2021-04-20')
 netflix <- tuesdata$netflix
+
+netflix |>
+  group_by(type, rating) |>
+  summarize(count = n()) |>
+  ggplot(aes(x = rating, y = count)) + 
+    geom_bar(stat = "identity") +
+    labs(x = "Media Type", y = "Count", title = "Types of Media") +
+    facet_wrap(~ type)
+
+```
+
+These graphs convey the number of movies and TV shows for each rating.
+
+```{r}
+clean_genres <- str_remove_all(netflix$listed_in, ",.*") 
+print(clean_genres)
+
+```
+
+```{r}
+
 
 ```
