@@ -227,27 +227,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>These graphs convey the number of movies and TV shows for each rating.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>netflix <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rating_type =</span> <span class="fu">str_c</span>(rating, <span class="st">" "</span>, type)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>clean_genres <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(netflix<span class="sc">$</span>listed_in, <span class="st">",.*"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function eliminates the cross-listing of genres to make for an easier analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">str_detect</span>(netflix<span class="sc">$</span>country, <span class="st">"Singapore|China|India|South Korea|Indonesia|Japan|Taiwan|Philippines"</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(netflix<span class="sc">$</span>country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7,787 × 13
-   show_id type    title director   cast  country date_added release_year rating
-   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt; 
- 1 s1      TV Show 3%    &lt;NA&gt;       João… Brazil  August 14…         2020 TV-MA 
- 2 s2      Movie   7:19  Jorge Mic… Demi… Mexico  December …         2016 TV-MA 
- 3 s3      Movie   23:59 Gilbert C… Tedd… Singap… December …         2011 R     
- 4 s4      Movie   9     Shane Ack… Elij… United… November …         2009 PG-13 
- 5 s5      Movie   21    Robert Lu… Jim … United… January 1…         2008 PG-13 
- 6 s6      TV Show 46    Serdar Ak… Erda… Turkey  July 1, 2…         2016 TV-MA 
- 7 s7      Movie   122   Yasir Al … Amin… Egypt   June 1, 2…         2019 TV-MA 
- 8 s8      Movie   187   Kevin Rey… Samu… United… November …         1997 R     
- 9 s9      Movie   706   Shravan K… Divy… India   April 1, …         2019 TV-14 
-10 s10     Movie   1920  Vikram Bh… Rajn… India   December …         2008 TV-MA 
-# ℹ 7,777 more rows
-# ℹ 4 more variables: duration &lt;chr&gt;, listed_in &lt;chr&gt;, description &lt;chr&gt;,
-#   rating_type &lt;chr&gt;</code></pre>
+<pre><code>[1] 1877</code></pre>
 </div>
 </div>
+<p>I am curious how much Netflix content comes from Asian production. str_detect lets us know that 1877 of the shows and movies on Netflix are from Asia.</p>
+<p>Sources:</p>
+<p>This dataset consists of tv shows and movies available on Netflix as of 2019. The dataset is collected from Flixable which is a third-party Netflix search engine.</p>
+<p>It was found on the TidyTuesday github; <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-04-20" class="uri">https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-04-20</a></p>
 
 
 
