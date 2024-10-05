@@ -142,6 +142,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./TidyTuesday2.html">
  <span class="dropdown-text">World Heritage Sites</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./Project 2.html">
+ <span class="dropdown-text">Project 2</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -202,12 +206,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2023-08-22'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>population</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>desired_variables <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>desired_variables <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">select</span>(year, coa_name, refugees, asylum_seekers)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>germany_data <span class="ot">&lt;-</span> desired_variables <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>germany_data <span class="ot">&lt;-</span> desired_variables <span class="sc">|&gt;</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">filter</span>(coa_name <span class="sc">==</span> <span class="st">"Germany"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>summary_germany <span class="ot">&lt;-</span> germany_data <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>summary_germany <span class="ot">&lt;-</span> germany_data <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">summarize</span>(</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">total_refugees =</span> <span class="fu">sum</span>(refugees, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">total_asylum_seekers =</span> <span class="fu">sum</span>(asylum_seekers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>

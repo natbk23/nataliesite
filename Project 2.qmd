@@ -20,36 +20,48 @@ tuesdata <- tidytuesdayR::tt_load('2021-04-20')
 netflix <- tuesdata$netflix
 
 netflix |>
+  filter(!is.na(rating), type == "Movie") |>
   group_by(type, rating) |>
   summarize(count = n()) |>
+  filter(count > 0) |>
   ggplot(aes(x = rating, y = count)) + 
     geom_bar(stat = "identity") +
     labs(x = "Media Type", y = "Count", title = "Types of Media") +
-    facet_wrap(~ type)
-
+    theme_minimal()
 ```
 
-These graphs convey the number of movies and TV shows for each rating.
+These graphs convey the distrubution of movies for each rating.
 
 ```{r}
-clean_genres <- str_remove_all(netflix$listed_in, ",.*") 
-
+netflix |>
+  mutate(clean_genres = str_remove_all(netflix$listed_in, ",.*"))
 ```
 
 This function eliminates the cross-listing of genres to make for an easier analysis.
 
 ```{r}
-
+r_comedies <- netflix |>
+  mutate(clean_genres = str_remove_all(listed_in, ",.*")) |>
+  filter(str_detect(clean_genres, "Comedies")) |>
+  summarize(percent_r = mean(rating == "R") * 100)
+print(r_comedies)
 ```
 
-I was curious
+10.6% of all comedies are Rated R- I predicted higher!
+
+```{r}
+num_the <- length(grep("^The ", netflix$title, value = TRUE))
+print(num_the)
+```
+
+I was curious how many shows and movies start with "The". I am surprised to find only 982!
 
 ```{r}
 sum(str_detect(netflix$country, "Singapore|China|India|South Korea|Indonesia|Japan|Taiwan|Philippines") & !is.na(netflix$country))
 
 ```
 
-I am curious how much Netflix content comes from Asian production. str_detect lets us know that 1877 of the shows and movies on Netflix are from Asia.
+I was wondering how much Netflix content comes from Asian production. str_detect lets us know that 1877 of the shows and movies on Netflix are from Asia.
 
 ```{r}
 asia <- c("Singapore", "China", "India", "South Korea", "Indonesia", "Japan", "Taiwan", "Philippines")
