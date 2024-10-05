@@ -39,11 +39,34 @@ clean_genres <- str_remove_all(netflix$listed_in, ",.*")
 This function eliminates the cross-listing of genres to make for an easier analysis.
 
 ```{r}
+
+```
+
+I was curious
+
+```{r}
 sum(str_detect(netflix$country, "Singapore|China|India|South Korea|Indonesia|Japan|Taiwan|Philippines") & !is.na(netflix$country))
 
 ```
 
 I am curious how much Netflix content comes from Asian production. str_detect lets us know that 1877 of the shows and movies on Netflix are from Asia.
+
+```{r}
+asia <- c("Singapore", "China", "India", "South Korea", "Indonesia", "Japan", "Taiwan", "Philippines")
+
+netflix |>
+  filter(country %in% c(asia, "United States", "United Kingdom")) |>
+  mutate(country = ifelse(str_detect(country, paste(asia, collapse = "|")), "Asia", country)) |>
+  group_by(type, country) |>
+  summarize(count = n()) |>
+  ggplot(aes(x = type, y = count, fill = country)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Movies and TV Shows from Asia, UK, and USA ")
+      
+  
+```
+
+This graph conveys the proportion of Asian, UK, and USA production in movies and TV shows. I am surprised at how much Asian production there is, and anticipated more British!
 
 Sources:
 
