@@ -1,0 +1,11 @@
+---
+title: "HCD Experience"
+description: |
+  This two-month long design project was prompted by the Pomona College Community Center's opening in Downtown Pomona. In teams, we were tasked with designing an experiential product that would meaningfully contribute to the neighborhood while bridging a healthy relationship between the two very different communities of Pomona College and Pomona City.
+author: Natalie Roston
+date: September 18, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---

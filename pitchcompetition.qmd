@@ -1,0 +1,12 @@
+---
+title: "First Place Venture Pitch Competition"
+#image: profile.jpeg
+description: |
+  Analysis of refugee data from TidyTuesday
+author: Natalie Roston
+date: September 18, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---

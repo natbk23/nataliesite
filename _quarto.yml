@@ -14,8 +14,20 @@ website:
             href: TidyTuesday1.qmd
           - text: "World Heritage Sites"
             href: TidyTuesday2.qmd
-          - text: "Project 2"
+          - text: "Text Analysis"
             href: Project 2.qmd
+      - text: Designs
+        menu: 
+          - text: "User-Centered Community Experience Design"
+            href: HCDexperience.qmd
+          - text: "2024 Hackathon Figma"
+            href: 2024hackathon.qmd
+          - text: "P-ai UX Wireframe"
+            href: paiproject.qmd
+          - text: "Pitch Competition Product Design"
+            href: pitchcompetition.qmd
+      - text: Research
+        href: aestheticsresearch.qmd
 
 format:
   html:
