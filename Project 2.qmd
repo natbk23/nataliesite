@@ -3,7 +3,7 @@ title: "Project 2"
 description: |
   Text Analysis
 author: Natalie Roston
-date: September 18, 2024
+date: October 3, 2024
 format: html
 execute:
   warning: false

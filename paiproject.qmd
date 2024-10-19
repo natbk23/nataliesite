@@ -1,1 +1,12 @@
-
+---
+title: "P-ai Figma Wireframe"
+description: |
+  The p-link team's mission was to establish a platform that would improve connectivity between 5C students and alumni.  
+  
+author: Natalie Roston
+date: April 23, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---

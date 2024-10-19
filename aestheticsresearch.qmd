@@ -3,7 +3,7 @@ title: "Summer 2024 Aesthetics Research"
 description: |
   Poster for the cognitive science research I completed with Dr Edward Vessel at the City College of New York.
 author: Natalie Roston
-date: October 1, 2024
+date: August 20, 2024
 format: html
 execute:
   warning: false

@@ -1,1 +1,12 @@
-
+---
+title: "2024 Hackathon Figma Wireframe"
+description: |
+  The theme of the 2024 Claremont College Hackathon was "Tech for Good". My team created a full web prototype of our app Call Your Mom. Our product supports alcohol safety among college students by calculating a drink maximum estimate, presenting an accessible drink counter, integrating a rideshare API, and establishing a streamlined emergency services connection. 
+  
+author: Natalie Roston
+date: April 15, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
