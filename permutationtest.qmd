@@ -1,5 +1,5 @@
 ---
-title: "Permutation Test on Movie Box Office"
+title: "Permutation Test on Box Office Success Between Genres"
 author: "Natalie Roston"
 format: html
 ---
