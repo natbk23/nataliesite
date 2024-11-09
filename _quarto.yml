@@ -16,6 +16,8 @@ website:
             href: TidyTuesday2.qmd
           - text: "Text Analysis"
             href: Project 2.qmd
+          - text: "Permutation Test"
+            href: permutationtest.qmd
       - text: Designs
         menu: 
           - text: "User-Centered Community Experience Design"

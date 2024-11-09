@@ -1,0 +1,80 @@
+---
+title: "Permutation Test on Movie Box Office Gross"
+author: "Natalie Roston"
+format: html
+---
+
+\## Introduction
+
+In this analysis, we aim to test whether there is a significant difference in the average box office revenue between action and comedy movies using the \`movies\` dataset from OpenIntro. We will apply a permutation test to evaluate if any observed difference in average box office gross is statistically significant under the null hypothesis that genre does not affect revenue.
+
+## Data Setup
+
+```{r}
+# Load necessary libraries
+library(openintro)
+library(ggplot2)
+library(purrr)
+
+# Load the movies dataset
+data("movies")
+
+# View the structure of the dataset
+str(movies)
+```
+
+```{r}
+movies$box_office <- as.numeric(movies$box_office)  
+movies <- na.omit(movies)  
+
+# Calculate the observed difference in mean box office revenue between action and comedy movies
+observed_diff <- with(movies, 
+                      mean(box_office[genre == "action"], na.rm = TRUE) - 
+                      mean(box_office[genre == "comedy"], na.rm = TRUE))
+
+# Output the observed difference
+observed_diff
+
+```
+
+```{r}
+# Define a function to calculate the permuted difference in mean gross
+permute_diff <- function(data) {
+  shuffled_genre <- sample(data$genre)
+  mean(data$box_office[shuffled_genre == "action"], na.rm = TRUE) - 
+    mean(data$box_office[shuffled_genre == "comedy"], na.rm = TRUE)
+}
+
+```
+
+```{r}
+# Run the permutation test with 10,000 simulations
+set.seed(123)  # For reproducibility
+num_simulations <- 10000
+perm_diffs <- map_dbl(1:num_simulations, ~ permute_diff(movies))
+
+```
+
+```{r}
+# Create a data frame for the permuted differences
+perm_data <- data.frame(perm_diffs = perm_diffs)
+
+# Plot the distribution of permuted differences
+ggplot(perm_data, aes(x = perm_diffs)) +
+  geom_histogram(binwidth = 50000000, color = "black", fill = "skyblue", alpha = 0.7) +
+  geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", size = 1) +
+  labs(
+    title = "Permutation Test: Box Office Gross Differences Between Action and Comedy Movies",
+    x = "Difference in Mean Gross (Action - Comedy)",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+# Calculate the p-value
+p_value <- mean(abs(perm_diffs) >= abs(observed_diff))
+p_value
+
+```
