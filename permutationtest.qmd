@@ -1,5 +1,5 @@
 ---
-title: "Permutation Test on Movie Box Office Gross"
+title: "Permutation Test on Movie Box Office"
 author: "Natalie Roston"
 format: html
 ---
