@@ -4,22 +4,19 @@ author: "Natalie Roston"
 format: html
 ---
 
-\## Introduction
+**Introduction**
 
-In this analysis, we aim to test whether there is a significant difference in the average box office revenue between action and comedy movies using the \`movies\` dataset from OpenIntro. We will apply a permutation test to evaluate if any observed difference in average box office gross is statistically significant under the null hypothesis that genre does not affect revenue.
+In this analysis, I wanted to test whether there is a significant difference in the average box office revenue between action and comedy movies using the \`movies\` dataset from OpenIntro. I use a permutation test to evaluate if any observed difference in average box office gross is statistically significant under the null hypothesis that genre does not affect revenue. I hypothesize that action movies have a higher box office revenue than comedies.
 
-## Data Setup
+**Data Setup**
 
 ```{r}
-# Load necessary libraries
 library(openintro)
 library(ggplot2)
 library(purrr)
 
-# Load the movies dataset
 data("movies")
 
-# View the structure of the dataset
 str(movies)
 ```
 
@@ -32,13 +29,11 @@ observed_diff <- with(movies,
                       mean(box_office[genre == "action"], na.rm = TRUE) - 
                       mean(box_office[genre == "comedy"], na.rm = TRUE))
 
-# Output the observed difference
 observed_diff
 
 ```
 
 ```{r}
-# Define a function to calculate the permuted difference in mean gross
 permute_diff <- function(data) {
   shuffled_genre <- sample(data$genre)
   mean(data$box_office[shuffled_genre == "action"], na.rm = TRUE) - 
@@ -48,18 +43,15 @@ permute_diff <- function(data) {
 ```
 
 ```{r}
-# Run the permutation test with 10,000 simulations
-set.seed(123)  # For reproducibility
+set.seed(123) 
 num_simulations <- 10000
 perm_diffs <- map_dbl(1:num_simulations, ~ permute_diff(movies))
 
 ```
 
 ```{r}
-# Create a data frame for the permuted differences
 perm_data <- data.frame(perm_diffs = perm_diffs)
 
-# Plot the distribution of permuted differences
 ggplot(perm_data, aes(x = perm_diffs)) +
   geom_histogram(binwidth = 50000000, color = "black", fill = "skyblue", alpha = 0.7) +
   geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", size = 1) +
@@ -72,9 +64,18 @@ ggplot(perm_data, aes(x = perm_diffs)) +
 
 ```
 
+This plot illustrates the results of a permutation test designed to assess whether there is a statistically significant difference in box office revenue between action and comedy movies. In the histogram, we see the distribution of mean differences in box office revenue under the null hypothesis, which assumes there is no true effect of genre on box office performance. Each bar represents the frequency of mean differences obtained by randomly shuffling genre labels (action and comedy) across all movies, then calculating the difference in means for each shuffle. This simulated distribution of differences reveals the range of values we might expect if genre had no impact on revenue.
+
+The red dashed line in the plot marks the observed difference in box office revenue between action and comedy movies as calculated from the original data set. This observed difference provides the basis for testing our hypothesis. If this red line lies well outside the central bulk of the histogram, it indicates that the observed difference is unusual compared to what we would expect under the null hypothesis. In other words, a position far from the central peak of the histogram suggests that the observed difference in revenue is not easily explainable by random variation alone.
+
 ```{r}
-# Calculate the p-value
 p_value <- mean(abs(perm_diffs) >= abs(observed_diff))
 p_value
 
 ```
+
+The position of the observed difference near the tail of the distribution aligns with a p-value of 0.0406, indicating a statistically significant result at the 5% significance level. This means that, under the null hypothesis, there is only a 4.06% chance of observing a difference as extreme as the one in our data set. Consequently, the plot supports the conclusion that there is likely a true difference in box office revenue between action and comedy movies, with genre possibly influencing financial performance. This visualization, therefore, provides both a statistical and a visual basis for concluding that genre may have an impact on box office success.
+
+Source:
+
+OpenIntro Package, [Investigating Statistical Concepts, Applications and Methods](http://www.rossmanchance.com/iscam2/data/movies03.txt)
