@@ -54,7 +54,7 @@ perm_data <- data.frame(perm_diffs = perm_diffs)
 
 ggplot(perm_data, aes(x = perm_diffs)) +
   geom_histogram(binwidth = 50000000, color = "black", fill = "skyblue", alpha = 0.7) +
-  geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", size = 1) +
+  geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", linewidth = 1) +
   labs(
     title = "Permutation Test: Box Office Gross Differences Between Action and Comedy Movies",
     x = "Difference in Mean Gross (Action - Comedy)",
