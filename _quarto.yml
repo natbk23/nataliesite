@@ -10,6 +10,8 @@ website:
         text: Home
       - text: Data Viz
         menu: 
+          - text: "SQL"
+            href: sql_audio.qmd
           - text: "Refugees"
             href: TidyTuesday1.qmd
           - text: "World Heritage Sites"
