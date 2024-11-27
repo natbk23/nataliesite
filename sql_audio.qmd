@@ -216,3 +216,7 @@ q2_graph |>
 *Because data was identical across races, I used facet_wrap to isolate the graphs by Race. Interestingly, Rosowski (2012) separated "Chinese" from "Asian" and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000.*
 
 For Question 1, it was important that I aggregate data for specific studies with Identifier and that I filter within the frequency range of 80000 \> Frequency \> 200. For Question 2,I wanted to explore the race variable. After determiniing that Rosowski (2012) enrolled multiple race groups, I joined the relevant variables using the "Rosowksi_2021" Identifier. I then graphed the data, grouping by race.
+
+Article Source: Voss SE. Resource Review. Ear Hear. 2019 Nov/Dec;40(6):1481. doi: 10.1097/AUD.0000000000000790. PMID: 31651606; PMCID: PMC7093226.
+
+Database Source: <https://www.science.smith.edu/wai-database/>
