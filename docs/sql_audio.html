@@ -216,6 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>To replicate the table in Voss (2020), I will be pulling the measurements, PI info, and subject tables from the scidb.smith.edu database. After making sure I understand the data structure, I will turn the Frequency data to a log scale. I will then select and join the relevant data before preparing it for visualization. The above steps are in SQL, but I will use R’s ggplot package to produce the visualization.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -972,19 +973,17 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Measurements</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Frequency;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Frequency;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>graph <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span> (<span class="at">x=</span>Frequency, <span class="at">y =</span> mean_absorbance,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="at">color =</span> Identifier,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="at">group =</span> Identifier)) <span class="sc">+</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span> (<span class="at">x=</span>Frequency, <span class="at">y =</span> mean_absorbance,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> Identifier,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> Identifier)) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -995,18 +994,15 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> p.<span class="kw">Identifier</span>, p.<span class="dt">Year</span>, p.AuthorsShortList,</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear) <span class="kw">AS</span> ear_you</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> PI_Info <span class="kw">AS</span> p</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> p.<span class="kw">Identifier</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Instrument;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear) <span class="kw">AS</span> ear_you</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> PI_Info <span class="kw">AS</span> p</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> p.<span class="kw">Identifier</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Instrument;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1044,6 +1040,18 @@ Attaching package: 'dplyr'</code></pre>
 <td style="text-align: right;">14</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Liu_2008</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">Liu et al.</td>
+<td style="text-align: right;">92</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rosowski_2012</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Rosowski et al.</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Shahnaz_2006</td>
 <td style="text-align: right;">2006</td>
 <td style="text-align: left;">Shahnaz and Bork</td>
@@ -1067,18 +1075,6 @@ Attaching package: 'dplyr'</code></pre>
 <td style="text-align: left;">Voss and Allen</td>
 <td style="text-align: right;">10</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Voss_2010</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Voss et al.</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Werner_2010</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Werner et al.</td>
-<td style="text-align: right;">962</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1093,16 +1089,14 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> p.<span class="kw">Identifier</span></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Instrument;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Instrument;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
 <colgroup>
-<col style="width: 16%">
+<col style="width: 17%">
 <col style="width: 6%">
 <col style="width: 21%">
 <col style="width: 6%">
@@ -1147,6 +1141,20 @@ Attaching package: 'dplyr'</code></pre>
 <td style="text-align: left;">Lewis and Neely (2015) N=14; Other</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Liu_2008</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">Liu et al.</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: left;">Liu et al.&nbsp;(2008) N=92; preTitan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rosowski_2012</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Rosowski et al.</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: left;">Rosowski et al.&nbsp;(2012) N=58; HearID</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Shahnaz_2006</td>
 <td style="text-align: right;">2006</td>
 <td style="text-align: left;">Shahnaz and Bork</td>
@@ -1174,50 +1182,32 @@ Attaching package: 'dplyr'</code></pre>
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">Voss and Allen (1994) N=10; preHearID</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Voss_2010</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Voss et al.</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">Voss et al.&nbsp;(2010) N=12; HearID</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Werner_2010</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Werner et al.</td>
-<td style="text-align: right;">962</td>
-<td style="text-align: left;">Werner et al.&nbsp;(2010) N=962; Other</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="cell" data-output.var="graph2">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> p.<span class="kw">Identifier</span>, p.<span class="dt">Year</span>, p.AuthorsShortList, Frequency,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>LOG10(Frequency) <span class="kw">AS</span> log_frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>LOG10(Frequency) <span class="kw">AS</span> log_frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear) <span class="kw">AS</span> ear_u,</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear) <span class="kw">AS</span> ear_u,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">CONCAT</span>(AuthorsShortList, <span class="ot">" ("</span> , <span class="dt">year</span>, <span class="ot">") "</span>, <span class="ot">"N="</span>, <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear), <span class="ot">"; "</span>, Instrument) <span class="kw">AS</span> legend</span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">CONCAT</span>(AuthorsShortList, <span class="ot">" ("</span> , <span class="dt">year</span>, <span class="ot">") "</span>, <span class="ot">"N="</span>, <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear), <span class="ot">"; "</span>, Instrument) <span class="kw">AS</span> legend</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> PI_Info <span class="kw">AS</span> p</span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> PI_Info <span class="kw">AS</span> p</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> p.<span class="kw">Identifier</span></span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> p.<span class="kw">Identifier</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span> ,<span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span> , <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span> ) <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Instrument, Frequency;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Instrument, Frequency;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>graph2 <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span> (<span class="at">x=</span>Frequency, <span class="at">y =</span> mean_absorbance,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="at">color =</span> legend,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="at">group =</span> legend)) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span> (<span class="at">x=</span>Frequency, <span class="at">y =</span> mean_absorbance,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> legend,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> legend)) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1396,6 +1386,78 @@ Attaching package: 'dplyr'</code></pre>
 </table>
 </div>
 </div>
+<div class="cell" data-output.var="q2_graph">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> Frequency, Race,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> ave_absorbance</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Subjects <span class="kw">AS</span> s</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RIGHT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> s.<span class="kw">Identifier</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> m.<span class="kw">Identifier</span> <span class="op">=</span> <span class="ot">"Rosowski_2012"</span> <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span> <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> Race, Frequency</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(q2_graph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Frequency      Race ave_absorbance
+1  210.9375 Caucasian     0.07766760
+2  210.9375 Black         0.07766760
+3  210.9375 Chinese       0.07766760
+4  210.9375 Asian         0.07766760
+5  234.3750 Caucasian     0.09241395
+6  234.3750 Black         0.09241395</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> race, <span class="fu">COUNT</span>(<span class="op">*</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Subjects <span class="kw">WHERE</span> <span class="kw">Identifier</span> <span class="op">=</span> <span class="ot">"Rosowski_2012"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> Race</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>4 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">race</th>
+<th style="text-align: right;">COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Caucasian</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinese</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Asian</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>q2_graph <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span> (<span class="at">x =</span> Frequency, <span class="at">y =</span> ave_absorbance,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> Race,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">group =</span> Race)) <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Race) <span class="sc">+</span> </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sql_audio_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>*Because data was identical across races, I used facet_wrap to isolate the graphs by Race. Interestingly, Rosowski (2012) separated “Chinese” from “Asian” and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000.</p>
+<p>For Question 1, it was important that I aggregate data for specific studies with Identifier and that I filter within the frequency range of 80000 &gt; Frequency &gt; 200. For Question 2,I wanted to explore the race variable. After determiniing that Rosowski (2012) enrolled multiple race groups, I joined the relevant variables using the “Rosowksi_2021” Identifier. I then graphed the data, grouping by race.</p>
 
 
 
