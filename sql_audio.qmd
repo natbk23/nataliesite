@@ -37,6 +37,7 @@ SELECT *
 FROM Measurements
 LIMIT 0, 5;
 ```
+*This helped me understand what the data structure of Measurements is.*
 
 ```{sql}
 #| connection: con_wai
@@ -45,6 +46,7 @@ SELECT *
 FROM PI_Info
 LIMIT 0, 50;
 ```
+*This helped me understand what the data structure of PI_Info is.*
 
 ```{sql}
 #| connection: con_wai
@@ -52,6 +54,7 @@ LIMIT 0, 50;
 SELECT * FROM PI_Info
 WHERE Identifier = "Abur_2014";
 ```
+*I explored the PI_Info data by looking at a particular study using Identifier; Abur (2014).
 
 ```{sql}
 #| connection: con_wai
@@ -59,6 +62,7 @@ WHERE Identifier = "Abur_2014";
 SELECT * FROM Measurements
 WHERE Identifier = "Abur_2014";
 ```
+*I then used the Identifier to explore the corresponding Measurements data.*
 
 ```{sql}
 #| connection: con_wai
@@ -82,6 +86,7 @@ graph |>
   scale_x_log10()
 
 ```
+*This first graph demonstrates the studies represented in Figure 1, created by selecting Identifier, Frequency, and Absorbance. There appears to be a strong positive correlation between Frequency and Mean Absorbance overall, but it differs between the studies.*
 
 ```{sql}
 #| connection: con_wai
@@ -147,6 +152,7 @@ graph2 |>
   scale_x_log10()
 
 ```
+*This second graph is created by joining Measurements with p.Identifier. There again appears to be a strong positive correlation between Frequency and Mean Absorbance overall, but it differs between the studies.*
 
 Question 2:
 
@@ -155,6 +161,8 @@ Question 2:
 SELECT *
 FROM Subjects
 ```
+*I wanted to examine the Subjects dataframe to determine which studies had participants of diverse races.*
+
 ```{sql}
 #| connection: con_wai
 #| output.var: "q2_graph"
@@ -178,6 +186,7 @@ SELECT race, COUNT(*)
 FROM Subjects WHERE Identifier = "Rosowski_2012"
 GROUP BY Race
 ```
+*I was curious how many subjects of each race were represented.*
 
 ```{r}
 q2_graph |>
@@ -188,7 +197,7 @@ q2_graph |>
   facet_wrap(~ Race) + 
   scale_x_log10()
 ```
-*Because data was identical across races, I used facet_wrap to isolate the graphs by Race. Interestingly, Rosowski (2012) separated "Chinese" from "Asian" and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000. 
+*Because data was identical across races, I used facet_wrap to isolate the graphs by Race. Interestingly, Rosowski (2012) separated "Chinese" from "Asian" and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000.*
 
 For Question 1, it was important that I aggregate data for specific studies with Identifier and that I filter within the frequency range of 80000 > Frequency > 200. For Question 2,I wanted to explore the race variable. After determiniing that Rosowski (2012) enrolled multiple race groups, I joined the relevant variables using the "Rosowksi_2021" Identifier. I then graphed the data, grouping by race. 
 
