@@ -20,6 +20,8 @@ website:
             href: permutationtest.qmd
           - text: "SQL"
             href: sql_audio.qmd
+          - text: "Client Presentation"
+            href: clientpresentation.qmd
       - text: Designs
         menu: 
           - text: "User-Centered Community Experience Design"

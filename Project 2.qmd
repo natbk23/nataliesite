@@ -1,5 +1,5 @@
 ---
-title: "Project 2"
+title: "Visualizing Netflix Data"
 description: |
   Text Analysis
 author: Natalie Roston
