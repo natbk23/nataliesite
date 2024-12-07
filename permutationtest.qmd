@@ -10,24 +10,31 @@ In this analysis, I wanted to test whether there is a significant difference in 
 
 **Data Setup**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(openintro)
 library(ggplot2)
 library(purrr)
+library(dplyr)
 
 data("movies")
 
 str(movies)
 ```
+The above code sets up the data and allows me to understand its structure. 
 
 ```{r}
-movies$box_office <- as.numeric(movies$box_office)  
-movies <- na.omit(movies)  
+movies_clean <- movies |>
+  filter(!is.na(box_office)) 
+```
 
-# Calculate the observed difference in mean box office revenue between action and comedy movies
-observed_diff <- with(movies, 
-                      mean(box_office[genre == "action"], na.rm = TRUE) - 
-                      mean(box_office[genre == "comedy"], na.rm = TRUE))
+```{r}
+observed_diff <- movies_clean |>
+  group_by(genre) |>
+  summarise(mean_box_office = mean(box_office, na.rm = TRUE)) |>
+  filter(genre %in% c("action", "comedy")) |>
+  summarize(observed_diff = 
+    mean_box_office[genre == "action"] - mean_box_office[genre == "comedy"]
+  )
 
 observed_diff
 
@@ -35,26 +42,31 @@ observed_diff
 
 ```{r}
 permute_diff <- function(data) {
-  shuffled_genre <- sample(data$genre)
-  mean(data$box_office[shuffled_genre == "action"], na.rm = TRUE) - 
-    mean(data$box_office[shuffled_genre == "comedy"], na.rm = TRUE)
+  data |>
+    mutate(shuffled_genre = sample(genre)) |>
+    summarize(
+      observed_diff = mean(box_office[shuffled_genre == "action"], na.rm = TRUE) - 
+                      mean(box_office[shuffled_genre == "comedy"], na.rm = TRUE)
+    ) |>
+    pull(observed_diff) 
 }
-
 ```
 
 ```{r}
-set.seed(123) 
+observed_diff <- as.numeric(observed_diff)
+
+set.seed(4747) 
 num_simulations <- 10000
 perm_diffs <- map_dbl(1:num_simulations, ~ permute_diff(movies))
-
+p_value <- mean(abs(perm_diffs) >= abs(observed_diff))
+p_value
 ```
 
 ```{r}
 perm_data <- data.frame(perm_diffs = perm_diffs)
 
 ggplot(perm_data, aes(x = perm_diffs)) +
-  geom_histogram(binwidth = 50000000, color = "black", fill = "skyblue", alpha = 0.7) +
-  geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", linewidth = 1) +
+  geom_histogram(bins = 30, color = "black", fill = "skyblue", alpha = 0.7) + geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", linewidth = 1) +
   labs(
     title = "Permutation Test: Box Office Gross Differences Between Action and Comedy Movies",
     x = "Difference in Mean Gross (Action - Comedy)",
@@ -76,6 +88,8 @@ p_value
 
 The position of the observed difference near the tail of the distribution aligns with a p-value of 0.0406, indicating a statistically significant result at the 5% significance level. This means that, under the null hypothesis, there is only a 4.06% chance of observing a difference as extreme as the one in our data set. Consequently, the plot supports the conclusion that there is likely a true difference in box office revenue between action and comedy movies, with genre possibly influencing financial performance. This visualization, therefore, provides both a statistical and a visual basis for concluding that genre may have an impact on box office success.
 
+The permutation test and histogram assess whether the observed difference in box office revenue between action and comedy movies (31 million dollars) is statistically significant or likely due to random chance. The histogram shows the null distribution, representing what differences we might expect if genre had no impact. With a p-value of 0.0406, the observed difference is unlikely to have occurred by chance, suggesting a real difference in box office revenue between action and comedy movies in the broader population. This result supports the idea that action movies tend to gross more than comedies on average.
+
 Source:
 
-OpenIntro Package, [Investigating Statistical Concepts, Applications and Methods](http://www.rossmanchance.com/iscam2/data/movies03.txt)
+OpenIntro. (2021). movies dataset. In OpenIntro: Data sets for introductory statistics (Version 3.4). Retrieved from https://www.openintro.org
