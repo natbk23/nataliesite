@@ -30,7 +30,7 @@ netflix |>
     theme_minimal()
 ```
 
-These graphs convey the distrubution of movies for each rating.
+These graphs convey the distribution of movies for each rating.
 
 ```{r}
 netflix |>
