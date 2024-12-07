@@ -1,17 +1,35 @@
-```         
 ---
-title: "title of presentation"
-author: "your name"
-subtitle: "date of presentation"
+title: "Final Client Presentation"
+author: "Natalie Roston"
+subtitle: "Dec 9, 2024"
 format:
   revealjs:
-    scrollable: true
     slide-number: true
     show-slide-number: all
+    scrollable: true
     embed-resources: true
 execute:
   echo: true
   warning: false
   message: false
 ---
-```
+
+# SQL Query Insights
+
+From Project #4
+
+------------------------------------------------------------------------
+
+# Presentation Overview
+
+-   Project Summary
+
+-   Individual Research Interest
+
+-   Findings
+
+-   Implications
+
+------------------------------------------------------------------------
+
+## Project Summary

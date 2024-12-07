@@ -60,6 +60,13 @@
     "href": "clientpresentation.html",
     "title": "nataliesite",
     "section": "",
-    "text": "---\ntitle: \"title of presentation\"\nauthor: \"your name\"\nsubtitle: \"date of presentation\"\nformat:\n  revealjs:\n    scrollable: true\n    slide-number: true\n    show-slide-number: all\n    embed-resources: true\nexecute:\n  echo: true\n  warning: false\n  message: false\n---"
+    "text": "---\ntitle: \"title of presentation\"\nauthor: \"your name\"\nsubtitle: \"date of presentation\"\nformat:\n  revealjs:\n    scrollable: true\n    slide-number: true\n    show-slide-number: all\n    embed-resources: true\nexecute:\n  echo: true\n  warning: false\n  message: false\n---\n##SQL Query Findings\noifoffs\n##Project Overview\nsdfsfds"
+  },
+  {
+    "objectID": "clientpresentation.html#project-summary",
+    "href": "clientpresentation.html#project-summary",
+    "title": "Final Client Presentation",
+    "section": "Project Summary",
+    "text": "Project Summary"
   }
 ]
