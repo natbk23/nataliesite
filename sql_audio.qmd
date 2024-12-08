@@ -138,23 +138,6 @@ FROM Subjects
 
 *I wanted to examine the Subjects dataframe to determine which studies had participants of diverse races.*
 
-```{sql}
-#| connection: con_wai
-#| output.var: "q2_graph"
-
-SELECT Frequency, Race,
-    AVG(Absorbance) AS ave_absorbance
-FROM Subjects AS s
-RIGHT JOIN Measurements AS m ON m.Identifier = s.Identifier 
-WHERE m.Identifier = "Rosowski_2012" AND Frequency > 200 AND Frequency < 8000
-GROUP BY Race, Frequency
-```
-
-```{r}
-head(q2_graph)
-```
-
-Need to edit so I am joining on SubjectNumber instead of Identifier:
 
 ```{sql}
 #| connection: con_wai
@@ -168,15 +151,6 @@ WHERE m.Identifier = "Rosowski_2012" AND Frequency > 200 AND Frequency < 8000
 GROUP BY Race, Frequency
 ```
 
-```{sql}
-#| connection: con_wai
-
-SELECT race, COUNT(*)
-FROM Subjects WHERE Identifier = "Rosowski_2012"
-GROUP BY Race
-```
-
-*I was curious how many subjects of each race were represented.*
 
 ```{r}
 q2_graph |>
@@ -185,6 +159,10 @@ q2_graph |>
               group = Race)) +
   geom_line() +
   facet_wrap(~ Race) + 
+   labs(
+    x = "Frequency (Hz)",
+    y = "Mean Absorbance",
+    title = "Mean Absorbance from Rosowski et al across Race") +
   scale_x_log10()
 ```
 
