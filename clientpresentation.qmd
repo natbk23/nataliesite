@@ -31,3 +31,77 @@ From Project #4
 ------------------------------------------------------------------------
 
 ## Project Summary
+
+![Find a single study from the WAI database where subjects of different sex, race, ethnicity, or age groups were enrolled.](images/clipboard-2844787304.png)
+
+## Research Interest
+
+I was particularly interested about differences in mean absorbance between **race.** However, exploring the Subjects dataframe taught me that very few studies were examining racial demographics.
+
+## Findings
+
+Rosowski et al. (2012) is a study that took a unique approach to race.
+
+```{r, echo=FALSE}
+library(RMariaDB)
+library(ggplot2)
+library(dplyr)
+library(mdsr)
+library(DBI)
+library(tidyverse)
+
+
+con_wai <- dbConnect(
+  MariaDB(), host = "scidb.smith.edu",
+  user = "waiuser", password = "smith_waiDB", 
+  dbname = "wai"
+)
+Measurements <- tbl(con_wai, "Measurements")
+PI_Info <- tbl(con_wai, "PI_Info")
+Subjects <- tbl(con_wai, "Subjects")
+
+# collect(Measurements)
+```
+
+```{sql}
+#| connection: con_wai
+#| output.var: "q2_graph"
+
+SELECT Frequency, Race,
+    AVG(Absorbance) AS ave_absorbance
+FROM Subjects AS s
+RIGHT JOIN Measurements AS m ON m.Identifier = s.Identifier 
+WHERE m.Identifier = "Rosowski_2012" AND Frequency > 200 AND Frequency < 8000
+GROUP BY Race, Frequency
+```
+
+```{r, echo=FALSE}
+head(q2_graph)
+```
+
+```{r, echo=FALSE}
+q2_graph |>
+  ggplot(aes (x = Frequency, y = ave_absorbance,
+              color = Race,
+              group = Race)) +
+  geom_line() +
+  scale_x_log10()
+```
+
+```{r, echo=FALSE}
+q2_graph |>
+  ggplot(aes (x = Frequency, y = ave_absorbance,
+              color = Race,
+              group = Race)) +
+  geom_line() +
+  facet_wrap(~ Race) + 
+  scale_x_log10()
+```
+
+## Implications 
+
+Rosowski et al.'s findings suggest that there was absolutely no difference in average absorbance across "races". In fact, there was little variation between *any* of the participants.
+
+![](images/clipboard-2887552036.png)
+
+However, the data to support these claims is insufficient. Are black individuals truly less likely to experience hearing loss, or it just underreported?
