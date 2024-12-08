@@ -10,7 +10,7 @@ execute:
 
 To replicate the table in Voss (2020), I will be pulling the measurements, PI info, and subject tables from the scidb.smith.edu database. After making sure I understand the data structure, I will turn the Frequency data to a log scale. I will then select and join the relevant data before preparing it for visualization. The above steps are in SQL, but I will use R's ggplot package to produce the visualization.
 
-```{r}
+```{r, echo=FALSE}
 library(RMariaDB)
 library(ggplot2)
 library(dplyr)
@@ -37,6 +37,8 @@ Subjects <- tbl(con_wai, "Subjects")
 SHOW TABLES;
 ```
 
+*This shows us the different tables in the database.*
+
 ```{sql}
 #| connection: con_wai
 
@@ -46,16 +48,6 @@ LIMIT 0, 5;
 ```
 
 *This helped me understand the data structure of Measurements.*
-
-```{sql}
-#| connection: con_wai
-
-SELECT *
-FROM PI_Info
-LIMIT 0, 50;
-```
-
-*This helped me understand what the data structure of PI_Info is.*
 
 ```{sql}
 #| connection: con_wai
@@ -77,48 +69,6 @@ WHERE Identifier = "Abur_2014";
 
 ```{sql}
 #| connection: con_wai
-#| output.var: "graph"
-
-SELECT Identifier, Frequency, LOG10(Frequency) AS log_frequency, AVG(Absorbance) AS mean_absorbance
-
-FROM Measurements
-
-WHERE Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015" ,"Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013" , "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010" ) AND Frequency > 200 AND Frequency < 8000
-
-GROUP BY Identifier, Frequency;
-```
-
-```{r}
-graph |>
-  ggplot(aes (x=Frequency, y = mean_absorbance,
-  color = Identifier,
-  group = Identifier)) +
-  geom_line()+
-  scale_x_log10()
-
-```
-
-*This first graph demonstrates the studies represented in Figure 1, created by selecting Identifier, Frequency, and Absorbance. There appears to be a strong positive correlation between Frequency and Mean Absorbance overall, but it differs between the studies.*
-
-```{sql}
-#| connection: con_wai
-
-SELECT p.Identifier, p.Year, p.AuthorsShortList,
-COUNT(DISTINCT SubjectNumber, Ear) AS ear_you
-
-FROM PI_Info AS p
-
-LEFT JOIN Measurements AS m ON m.Identifier = p.Identifier
-
-WHERE p.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015" ,"Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013" , "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010" ) AND Frequency > 200 AND Frequency < 8000
-
-GROUP BY Identifier, Instrument;
-
-
-```
-
-```{sql}
-#| connection: con_wai
 
 SELECT p.Identifier, Year, AuthorsShortList,
 COUNT(DISTINCT SubjectNumber, Ear) AS ears,
@@ -129,7 +79,10 @@ FROM PI_Info AS p
 
 LEFT JOIN Measurements AS m ON m.Identifier = p.Identifier
 
-WHERE p.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015" ,"Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013" , "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010" ) AND Frequency > 200 AND Frequency < 8000
+WHERE p.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015" ,"Lewis_2015", 
+"Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013" , "Sun_2016", 
+"Voss_1994", "Voss_2010", "Werner_2010" ) AND Frequency > 200 AND 
+Frequency < 8000
 
 GROUP BY Identifier, Instrument;
 
@@ -138,34 +91,42 @@ GROUP BY Identifier, Instrument;
 
 ```{sql}
 #| connection: con_wai
-#| output.var: "graph2"
+#| output.var: "graph"
 
 SELECT p.Identifier, p.Year, p.AuthorsShortList, Frequency,
 LOG10(Frequency) AS log_frequency, AVG(Absorbance) AS mean_absorbance,
 COUNT(DISTINCT SubjectNumber, Ear) AS ear_u,
 
-CONCAT(AuthorsShortList, " (" , year, ") ", "N=", COUNT(DISTINCT SubjectNumber, Ear), "; ", Instrument) AS legend
+CONCAT(AuthorsShortList, " (" , year, ") ", "N=", COUNT(DISTINCT SubjectNumber, Ear), 
+"; ", Instrument) AS legend
 
 FROM PI_Info AS p
 
 LEFT JOIN Measurements AS m ON m.Identifier = p.Identifier
 
-WHERE p.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015" ,"Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013" , "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010" ) AND Frequency > 200 AND Frequency < 8000
+WHERE p.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015" ,"Lewis_2015", 
+"Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013" , "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010" ) AND Frequency > 200 AND Frequency < 8000
 
 GROUP BY Identifier, Instrument, Frequency;
 ```
 
+
 ```{r}
-graph2 |>
-  ggplot(aes (x=Frequency, y = mean_absorbance,
+graph |>
+  ggplot(aes (x= Frequency, y = mean_absorbance,
   color = legend,
   group = legend)) +
-  geom_line()+
-  scale_x_log10()
+  geom_line() +
+  scale_x_log10() +
+  labs(
+    x = "Frequency (Hz)",
+    y = "Mean Absorbance",
+    title = "Mean Absorbance from Each Publication in WAI Database",
+    color = "Legend")
 
 ```
 
-*This second graph is created by joining Measurements with p.Identifier. There again appears to be a strong positive correlation between Frequency and Mean Absorbance overall, but it differs between the studies.*
+*This graph is created by joining Measurements with p.Identifier. There appears to be a strong positive correlation between Frequency and Mean Absorbance overall, but it differs between the studies.*
 
 Question 2:
 
@@ -193,6 +154,20 @@ GROUP BY Race, Frequency
 head(q2_graph)
 ```
 
+Need to edit so I am joining on SubjectNumber instead of Identifier:
+
+```{sql}
+#| connection: con_wai
+#| output.var: "q2_graph"
+
+SELECT Frequency, Race,
+    AVG(Absorbance) AS ave_absorbance
+FROM Subjects AS s
+RIGHT JOIN Measurements AS m ON m.SubjectNumber = s.SubjectNumber 
+WHERE m.Identifier = "Rosowski_2012" AND Frequency > 200 AND Frequency < 8000
+GROUP BY Race, Frequency
+```
+
 ```{sql}
 #| connection: con_wai
 
@@ -215,8 +190,12 @@ q2_graph |>
 
 *Because data was identical across races, I used facet_wrap to isolate the graphs by Race. Interestingly, Rosowski (2012) separated "Chinese" from "Asian" and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000.*
 
-For Question 1, it was important that I aggregate data for specific studies with Identifier and that I filter within the frequency range of 80000 \> Frequency \> 200. For Question 2,I wanted to explore the race variable. After determiniing that Rosowski (2012) enrolled multiple race groups, I joined the relevant variables using the "Rosowksi_2021" Identifier. I then graphed the data, grouping by race.
+For Question 1, it was important that I aggregate data for specific studies with Identifier and that I filter within the frequency range of 80000 \> Frequency \> 200. For Question 2,I wanted to explore the race variable. After determining that Rosowski (2012) enrolled multiple race groups, I joined the relevant variables using the "Rosowksi_2012" Identifier. I then graphed the data, grouping by race.
 
-Article Source: Voss SE. Resource Review. Ear Hear. 2019 Nov/Dec;40(6):1481. doi: 10.1097/AUD.0000000000000790. PMID: 31651606; PMCID: PMC7093226.
+Article Citations:
+
+Voss SE. Resource Review. Ear Hear. 2019 Nov/Dec;40(6):1481. doi: 10.1097/AUD.0000000000000790. PMID: 31651606; PMCID: PMC7093226.
+
+Rosowski, J. J., Nakajima, H. H., Hamade, M. A., Mahfoud, L., Merchant, G. R., Halpin, C. F., & Merchant, S. N. (2012). Ear-canal reflectance, umbo velocity, and tympanometry in normal-hearing adults. *Ear and Hearing, 33*(1), 19–34. <https://doi.org/10.1097/AUD.0b013e31822ccb76>
 
 Database Source: <https://www.science.smith.edu/wai-database/>
