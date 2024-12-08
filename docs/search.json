@@ -67,6 +67,27 @@
     "href": "clientpresentation.html#project-summary",
     "title": "Final Client Presentation",
     "section": "Project Summary",
-    "text": "Project Summary"
+    "text": "Project Summary\n\nFind a single study from the WAI database where subjects of different sex, race, ethnicity, or age groups were enrolled."
+  },
+  {
+    "objectID": "clientpresentation.html#research-interest",
+    "href": "clientpresentation.html#research-interest",
+    "title": "Final Client Presentation",
+    "section": "Research Interest",
+    "text": "Research Interest\nI was particularly interested about differences in mean absorbance between race. However, exploring the Subjects dataframe taught me that very few studies were examining racial demographics."
+  },
+  {
+    "objectID": "clientpresentation.html#findings",
+    "href": "clientpresentation.html#findings",
+    "title": "Final Client Presentation",
+    "section": "Findings",
+    "text": "Findings\nRosowski et al. (2012) is a study that took a unique approach to race.\n\nSELECT Frequency, Race,\n    AVG(Absorbance) AS ave_absorbance\nFROM Subjects AS s\nRIGHT JOIN Measurements AS m ON m.Identifier = s.Identifier \nWHERE m.Identifier = \"Rosowski_2012\" AND Frequency &gt; 200 AND Frequency &lt; 8000\nGROUP BY Race, Frequency\n\n\n\n  Frequency      Race ave_absorbance\n1  210.9375 Caucasian     0.07766760\n2  210.9375 Black         0.07766760\n3  210.9375 Chinese       0.07766760\n4  210.9375 Asian         0.07766760\n5  234.3750 Caucasian     0.09241395\n6  234.3750 Black         0.09241395"
+  },
+  {
+    "objectID": "clientpresentation.html#implications",
+    "href": "clientpresentation.html#implications",
+    "title": "Final Client Presentation",
+    "section": "Implications",
+    "text": "Implications\nRosowski et al.’s findings suggest that there was absolutely no difference in average absorbance across “races”. In fact, there was little variation between any of the participants.\n\nHowever, the data to support these claims is insufficient. Are black individuals truly less likely to experience hearing loss, or it just underreported?"
   }
 ]
