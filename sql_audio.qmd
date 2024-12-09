@@ -146,27 +146,27 @@ FROM Subjects
 SELECT Frequency, Race,
     AVG(Absorbance) AS ave_absorbance
 FROM Subjects AS s
-RIGHT JOIN Measurements AS m ON m.SubjectNumber = s.SubjectNumber 
-WHERE m.Identifier = "Rosowski_2012" AND Frequency > 200 AND Frequency < 8000
-GROUP BY Race, Frequency
+INNER JOIN Measurements AS m ON m.SubjectNumber = s.SubjectNumber
+WHERE m.Identifier = "Rosowski_2012" AND s.Identifier = "Rosowski_2012" 
+AND Frequency > 200 AND Frequency < 8000
+GROUP BY Race, Frequency;
 ```
 
 
 ```{r}
 q2_graph |>
-  ggplot(aes (x = Frequency, y = ave_absorbance,
-              color = Race,
-              group = Race)) +
+  ggplot(aes(x = Frequency, y = ave_absorbance, color = Race, group = Race)) +
   geom_line() +
-  facet_wrap(~ Race) + 
-   labs(
+  labs(
     x = "Frequency (Hz)",
     y = "Mean Absorbance",
-    title = "Mean Absorbance from Rosowski et al across Race") +
+    title = "Mean Absorbance from Rosowski et al across Race",
+    color = "Race"
+  ) +
   scale_x_log10()
 ```
 
-*Because data was identical across races, I used facet_wrap to isolate the graphs by Race. Interestingly, Rosowski (2012) separated "Chinese" from "Asian" and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000.*
+*Interestingly, Rosowski (2012) separated "Chinese" from "Asian" and had very little racial diversity overall. The graphs convey that after a strong positive correlation, average absorbance rapidly dropped after Frequency of 3000.*
 
 For Question 1, it was important that I aggregate data for specific studies with Identifier and that I filter within the frequency range of 80000 \> Frequency \> 200. For Question 2,I wanted to explore the race variable. After determining that Rosowski (2012) enrolled multiple race groups, I joined the relevant variables using the "Rosowksi_2012" Identifier. I then graphed the data, grouping by race.
 
