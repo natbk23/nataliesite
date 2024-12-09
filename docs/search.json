@@ -60,7 +60,7 @@
     "href": "clientpresentation.html#findings",
     "title": "Final Client Presentation",
     "section": "Findings",
-    "text": "Findings\nRosowski et al. (2012) is a study that took a unique approach to race.\n\nSELECT Frequency, Race,\n    AVG(Absorbance) AS ave_absorbance\nFROM Subjects AS s\nINNER JOIN Measurements AS m ON m.SubjectNumber = s.SubjectNumber\nWHERE m.Identifier = \"Rosowski_2012\" AND s.Identifier = \"Rosowski_2012\" \nAND Frequency &gt; 200 AND Frequency &lt; 8000\nGROUP BY Race, Frequency;"
+    "text": "Findings\nRosowski et al. (2012) is a study that took a unique approach to race.\n\nSELECT Frequency, Race,\n    AVG(Absorbance) AS ave_absorbance\nFROM Subjects AS s\nINNER JOIN Measurements AS m ON m.SubjectNumber = s.SubjectNumber\nWHERE m.Identifier = \"Rosowski_2012\" AND s.Identifier = \"Rosowski_2012\" \nAND Frequency &gt; 200 AND Frequency &lt; 8000\nGROUP BY Race, Frequency;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSELECT Race, COUNT(*) AS count\nFROM Subjects\nWHERE Identifier = \"Rosowski_2012\"\nGROUP BY Race;\n\n\n4 records\n\n\nRace\ncount\n\n\n\n\nCaucasian\n20\n\n\nBlack\n6\n\n\nChinese\n2\n\n\nAsian\n1"
   },
   {
     "objectID": "clientpresentation.html#implications",

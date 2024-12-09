@@ -107,6 +107,16 @@ q2_graph |>
   scale_x_log10()
 ```
 
+```{sql}
+#| connection: con_wai
+
+SELECT Race, COUNT(*) AS count
+FROM Subjects
+WHERE Identifier = "Rosowski_2012"
+GROUP BY Race;
+
+```
+
 ## Implications
 
 Rosowski et al.'s findings suggest that there were differences in average absorbance across "races". However, the races are incredibly limited, and isolate *Chinese* from *Asian*.
