@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-09-18">
 <meta name="description" content="Analysis of refugee data from TidyTuesday">
 
-<title>nataliesite - Refugees</title>
+<title>nataliesite - Refugees in Germany Over Time</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Refugees</h1>
+<h1 class="title">Refugees in Germany Over Time</h1>
 </div>
 
 <div>
@@ -240,6 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>This analysis examines refugee and asylum seeker trends in Germany using TidyTuesday data. The visualizations track changes over time, highlighting the distinct patterns for each group. These findings provide insight into migration dynamics and Germany’s role in global displacement trends.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -285,7 +286,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Data from the Internal Displacement Monitoring Centre (IDMC) on people displaced within their country due to conflict or violence</p></li>
 </ul>
 <!--
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -299,7 +299,6 @@ desired_variables <- population %>%
      select(year, coa_name, refugees, asylum_seekers)
 ```
 :::
-
 
 -->
 

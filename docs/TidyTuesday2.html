@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-09-18">
 <meta name="description" content="Analysis of UNESCO world heritage sites from TidyTuesday">
 
-<title>nataliesite - World Heritage Sites</title>
+<title>nataliesite - Scandinavian World Heritage Sites</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">World Heritage Sites</h1>
+<h1 class="title">Scandinavian World Heritage Sites</h1>
 </div>
 
 <div>
@@ -240,6 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>This project examines data on UNESCO World Heritage Sites from TidyTuesday, focusing on temporal and geographical trends. The dataset includes information on heritage site values for various countries, spanning multiple years.The analysis compares site values in 2004 and 2022, revealing insights into changes in preservation efforts and heritage site recognition across nations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2024-02-06'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>heritage <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>heritage</span>
@@ -256,8 +257,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Country Values in 2004 and 2022"</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"Value"</span>) <span class="sc">+</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Norway"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Denmark"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Sweden"</span> <span class="ot">=</span> <span class="st">"green"</span>)) <span class="sc">+</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Norway"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Denmark"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Sweden"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="ot">=</span> <span class="st">"green"</span>)) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

@@ -9,6 +9,7 @@ execute:
   warning: false
   message: false
 ---
+This project analyzes Netflix's catalog of movies and TV shows using TidyTuesday data. Visualizations explore content ratings, genres, and global contributions, with a focus on Asian production compared to the US and UK. The findings highlight surprising trends, including the diversity of Netflix’s offerings and patterns in content distribution.
 
 ```{r}
 library(tidytuesdayR)
@@ -64,11 +65,13 @@ sum(str_detect(netflix$country, "Singapore|China|India|South Korea|Indonesia|Jap
 I was wondering how much Netflix content comes from Asian production. str_detect lets us know that 1877 of the shows and movies on Netflix are from Asia.
 
 ```{r}
-asia <- c("Singapore", "China", "India", "South Korea", "Indonesia", "Japan", "Taiwan", "Philippines")
+asia <- c("Singapore", "China", "India", "South Korea", "Indonesia", "Japan", 
+          "Taiwan", "Philippines")
 
 netflix |>
   filter(country %in% c(asia, "United States", "United Kingdom")) |>
-  mutate(country = ifelse(str_detect(country, paste(asia, collapse = "|")), "Asia", country)) |>
+  mutate(country = ifelse(str_detect(country, paste(asia, collapse = "|")), 
+                          "Asia", country)) |>
   group_by(type, country) |>
   summarize(count = n()) |>
   ggplot(aes(x = type, y = count, fill = country)) +

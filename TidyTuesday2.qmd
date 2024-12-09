@@ -1,5 +1,5 @@
 ---
-title: "World Heritage Sites"
+title: "Scandinavian World Heritage Sites"
 description: |
   Analysis of UNESCO world heritage sites from TidyTuesday
 author: Natalie Roston
@@ -9,7 +9,11 @@ execute:
   message: false
   warning: false
 ---
-
+This project examines data on UNESCO World Heritage Sites from TidyTuesday, 
+focusing on temporal and geographical trends. The dataset includes information 
+on heritage site values for various countries, spanning multiple years.The 
+analysis compares site values in 2004 and 2022, revealing insights into changes 
+in preservation efforts and heritage site recognition across nations.
 ```{r}
 tuesdata <- tidytuesdayR::tt_load('2024-02-06')
 heritage <- tuesdata$heritage
@@ -26,7 +30,8 @@ ggplot(data_long, aes(x = year, y = value, color = country, group = country)) +
      labs(title = "Country Values in 2004 and 2022",
           x = "Year",
           y = "Value") +
-     scale_color_manual(values = c("Norway" = "blue", "Denmark" = "red", "Sweden" = "green")) +
+     scale_color_manual(values = c("Norway" = "blue", "Denmark" = "red", "Sweden"
+                                   = "green")) +
      theme_minimal()
 ```
 
