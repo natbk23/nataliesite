@@ -82,6 +82,12 @@ q2_graph |>
               color = Race,
               group = Race)) +
   geom_line() +
+   labs(
+    x = "Frequency (Hz)",
+    y = "Mean Absorbance",
+    title = "Mean Absorbance from Rosowski et al across Race",
+    color = "Race"
+  ) +
   scale_x_log10()
 ```
 
@@ -92,6 +98,12 @@ q2_graph |>
               group = Race)) +
   geom_line() +
   facet_wrap(~ Race) + 
+   labs(
+    x = "Frequency (Hz)",
+    y = "Mean Absorbance",
+    title = "Mean Absorbance from Rosowski et al across Race",
+    color = "Race"
+  ) +
   scale_x_log10()
 ```
 
