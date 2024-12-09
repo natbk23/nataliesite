@@ -70,13 +70,10 @@ Subjects <- tbl(con_wai, "Subjects")
 SELECT Frequency, Race,
     AVG(Absorbance) AS ave_absorbance
 FROM Subjects AS s
-RIGHT JOIN Measurements AS m ON m.Identifier = s.Identifier 
-WHERE m.Identifier = "Rosowski_2012" AND Frequency > 200 AND Frequency < 8000
-GROUP BY Race, Frequency
-```
-
-```{r, echo=FALSE}
-head(q2_graph)
+INNER JOIN Measurements AS m ON m.SubjectNumber = s.SubjectNumber
+WHERE m.Identifier = "Rosowski_2012" AND s.Identifier = "Rosowski_2012" 
+AND Frequency > 200 AND Frequency < 8000
+GROUP BY Race, Frequency;
 ```
 
 ```{r, echo=FALSE}
@@ -98,10 +95,14 @@ q2_graph |>
   scale_x_log10()
 ```
 
-## Implications 
+## Implications
 
-Rosowski et al.'s findings suggest that there was absolutely no difference in average absorbance across "races". In fact, there was little variation between *any* of the participants.
+Rosowski et al.'s findings suggest that there were differences in average absorbance across "races". However, the races are incredibly limited, and isolate *Chinese* from *Asian*.
 
-![](images/clipboard-2887552036.png)
+-   What does this mean for conclusions regarding race?
+
+-   How do we even classify race?
+
+![](Screenshot 2024-12-08 at 5.01.56 PM.png)
 
 However, the data to support these claims is insufficient. Are black individuals truly less likely to experience hearing loss, or it just underreported?
