@@ -26,10 +26,12 @@ website:
         menu: 
           - text: "User-Centered Community Experience Design"
             href: HCDexperience.qmd
-          - text: "2024 Hackathon Figma"
+          - text: "Alchohol Safety App Figma"
             href: 2024hackathon.qmd
-          - text: "P-ai UX Wireframe"
+          - text: "Alumni Connectivity Wireframe"
             href: paiproject.qmd
+          - text: "Campus Rideshare App Wireframe"
+            href: Sparkathon24.qmd
           - text: "Pitch Competition Product Design"
             href: pitchcompetition.qmd
       - text: Research

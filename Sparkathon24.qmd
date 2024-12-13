@@ -1,0 +1,17 @@
+---
+title: "Sparkathon"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+## The Prototype
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/COGyE1dy8k5hJUsPOzbSls/Untitled?node-id=17-67&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=17%3A67&amp;show-proto-sidebar=1&amp;embed-host=share" allowfullscreen>
+
+</iframe>
+
+## My Role
+
+As product manager and project lead, I oversaw the development of my team's product. I started with initial user interviews to identify pain points, assisted in the design, and strategized our market and financial approach.

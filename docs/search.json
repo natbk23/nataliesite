@@ -96,5 +96,26 @@
     "title": "Final Client Presentation",
     "section": "Thank You!",
     "text": "Thank You!"
+  },
+  {
+    "objectID": "paiproject.html#my-role",
+    "href": "paiproject.html#my-role",
+    "title": "Alumni Connection Figma Wireframe",
+    "section": "My Role",
+    "text": "My Role\nI acted as both Product Manager and UX Designer. After discussing with the engineers to fully understand our capabilities, I developed a comprehensive prototype on Figma and assisted in the creation of the site with React.js."
+  },
+  {
+    "objectID": "2024hackathon.html#my-role",
+    "href": "2024hackathon.html#my-role",
+    "title": "Alcohol Safety Figma Wireframe",
+    "section": "My Role",
+    "text": "My Role\nI was the principal UX Designer, but also acted as product manager as I oversaw the entire development from ideation to presentation. We made sure to conduct user testing to maintain a human-centered approach throughout our iterations."
+  },
+  {
+    "objectID": "Sparkathon24.html#my-role",
+    "href": "Sparkathon24.html#my-role",
+    "title": "Sparkathon",
+    "section": "My Role",
+    "text": "My Role\nAs product manager and project lead, I oversaw the development of my team’s product. I started with initial user interviews to identify pain points, assisted in the design, and strategized our market and financial approach."
   }
 ]
