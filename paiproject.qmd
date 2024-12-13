@@ -1,5 +1,5 @@
 ---
-title: "P-ai Figma Wireframe"
+title: "Alumni Connection Figma Wireframe"
 description: |
   The p-link team's mission was to establish a platform that would improve connectivity between 5C students and alumni.  
   
@@ -10,3 +10,13 @@ execute:
   warning: false
   message: false
 ---
+
+## The Prototype 
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/yHsz6dMmFx3b66rPu8ZQQz/p-link?node-id=12-38&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;embed-host=share" allowfullscreen>
+
+</iframe>
+
+## My Role
+
+I acted as both Product Manager and UX Designer. After discussing with the engineers to fully understand our capabilities, I developed a comprehensive prototype on Figma and assisted in the creation of the site with React.js.
