@@ -1,5 +1,7 @@
 ---
-title: "Sparkathon"
+title: "Campus Rideshare Design for 2024 Sparkathon"
+author: Natalie Roston
+date: November 3, 2024
 format: html
 execute:
   warning: false
@@ -8,7 +10,7 @@ execute:
 
 ## The Prototype
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/COGyE1dy8k5hJUsPOzbSls/Untitled?node-id=17-67&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=17%3A67&amp;show-proto-sidebar=1&amp;embed-host=share" allowfullscreen>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/9CE6v5epwauEwyovqeH81s/Uturn-Sparkathon?node-id=23-345&amp;p=f&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=3%3A2&amp;show-proto-sidebar=1&amp;embed-host=share" allowfullscreen>
 
 </iframe>
 
