@@ -1,2 +1,17 @@
-/* css styles */
-.
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+/* Change the background color to check if the styles are being applied */
+body#quarto-front-matter h1.title {
+  font-family: 'Roboto Mono', Monospace !important; /* Replace with your desired font */
+  background-color: lightgreen; /* For testing */
+}
+
+/* Custom cursor */
+body {
+  cursor: url('https://png.pngitem.com/pimgs/s/26-266942_watermelon-cursor-mousr-pixel-ftestickers-tumblr-mouse-cursor.png'), auto !important;
+}
+
+body {
+  cursor: url('https://png.pngitem.com/pimgs/s/26-266942_watermelon-cursor-mousr-pixel-ftestickers-tumblr-mouse-cursor.png') !important;
+}

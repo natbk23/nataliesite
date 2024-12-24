@@ -11,17 +11,19 @@ execute:
 ---
 
 ## The Design Process
+Please explore our whiteboard to see our identification of pain points, ideation, user testing, and prototyping in detail.
 
-<iframe src='https://app.mural.co/embed/ea8a80a4-ac18-4e18-87b2-c939ffc8ebf5' width='100%' height='480px' style='min-width: 640px; min-height: 480px; background-color: #f4f4f4; border: 1px solid #efefef' sandbox='allow-same-origin allow-scripts allow-modals allow-popups allow-popups-to-escape-sandbox'/>
+<iframe src='https://app.mural.co/embed/ea8a80a4-ac18-4e18-87b2-c939ffc8ebf5' width='100%' height='480px' style='min-width: 640px; min-height: 480px; background-color: #f4f4f4; border: 1px solid #efefef' sandbox='allow-same-origin allow-scripts allow-modals allow-popups allow-popups-to-escape-sandbox'></iframe>
+
 
 ## The Final Product
 
-The initial POV that inspired our design was: **High school aged students getting ready for college need spaces away from home and school to help perform well in his studies.**
+The initial POV that inspired our design was: **High school student preparing for college needs a third space besides school and home to help perform well in his studies.**
 
 Our simulation proved that even college-level students have trouble completing relatively basic assignments in environments that aren't conducive to learning.
 
-We observed that for every participant, more questions were successfully answered in the final quiet space we designed — they were able to complete problems without interruption and distraction!
+We observed that for every user testing simulation, more questions were successfully answered in the final quiet space we designed — they were able to complete problems without interruption and distraction!
 
 ## My Role
 
-As a team of five, we split up the product development process to efficiently reach our timeline goals, but oversaw each other's progress. I was particularly involved in the empathy and problem definition stages. By interviewing users and identifying pain points, I provided my team with necessary insights to begin ideating and prototyping. I also engaged with users during the testing phase, strategically incorporating their feedback and behavior to our iterations.
+As a team of five, we split up the product development process to efficiently reach our timeline goals, but oversaw each other's progress. I was particularly involved in the empathy and problem definition stages. By interviewing users and identifying pain points, I provided my team with necessary insights to begin ideating and prototyping. I also engaged with users during the testing phase, strategically incorporating their feedback and behavior into our iterations.
