@@ -3,8 +3,8 @@ title: "More About Natalie"
 image: human_tech.jpg
 toc: false
 about: 
-  template: broadside
-  image-width: 10em
+  template: marquee
+  image-width: 50em
   image-shape: rounded
   links:
     - text: Github
