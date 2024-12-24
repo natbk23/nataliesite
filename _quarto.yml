@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "nataliesite"
+  title: "nat on the web"
   navbar:
     left:
       - href: index.qmd
@@ -28,14 +28,16 @@ website:
             href: HCDexperience.qmd
           - text: "Alchohol Safety App Figma"
             href: 2024hackathon.qmd
-          - text: "Alumni Connectivity Wireframe"
-            href: paiproject.qmd
           - text: "Campus Rideshare App Wireframe"
             href: Sparkathon24.qmd
+          - text: "Alumni Connectivity Wireframe"
+            href: paiproject.qmd
           - text: "Pitch Competition Product Design"
             href: pitchcompetition.qmd
       - text: Research
         href: aestheticsresearch.qmd
+      - text: About
+        href: aboutme.qmd
 
 format:
   html:

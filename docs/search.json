@@ -25,7 +25,7 @@
     "href": "index.html",
     "title": "Natalie Roston",
     "section": "",
-    "text": "I am passionate about creating user-centric experiences and products that solve real-world problems. With a focus on empathy, I have worked on a variety of collaborative projects that have allowed me to continuously expand the boundaries of my heuristics. I invite you to explore some of my work in the “projects” tab and see how I have applied my skills to create impactful designs."
+    "text": "Product / UX / Data\nI am passionate about creating user-centric experiences and products that solve real-world problems. With a focus on empathy, I have worked on a variety of collaborative projects that have allowed me to continuously expand the boundaries of my heuristics. I invite you to explore some of my work in this website and see how I have applied my skills to create impactful designs."
   },
   {
     "objectID": "clientpresentation.html#project-summary",
@@ -159,5 +159,33 @@
     "title": "Campus Rideshare Design for 2024 Sparkathon",
     "section": "The Prototype",
     "text": "The Prototype"
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Natalie Roston",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nP.S. I am hard-coding this site myself using R Studio, CSS, and HTML! This is my first attempt at backend development, peruse the ‘Design’ tab for my developed & beautiful creations.↩︎"
+  },
+  {
+    "objectID": "aboutme.html",
+    "href": "aboutme.html",
+    "title": "More About Natalie",
+    "section": "",
+    "text": "Natalie is a current junior at Pomona College. When not conducting cognitive science research or designing on Figma, she can be found trying new recipes and pursuing her hobby in sustainable fashion.\nP.S. Natalie is hard-coding this site herself using R Studio, CSS, and HTML! This is her first attempt at web development, peruse the ‘Designs’ tab for Natalie’s developed & beautiful creations."
+  },
+  {
+    "objectID": "aboutme.html#education",
+    "href": "aboutme.html#education",
+    "title": "More About Natalie",
+    "section": "Education",
+    "text": "Education\nPomona College | Claremont, CA | Sept 2022 - June 2026\nBA in Cognitive Science, Concentrating in Human-Computer Interaction. Minors in Data Science and Politics"
+  },
+  {
+    "objectID": "aboutme.html#experience",
+    "href": "aboutme.html#experience",
+    "title": "More About Natalie",
+    "section": "Experience",
+    "text": "Experience\nBeni | Product Intern | September 2024 - Present\nVisNa Lab at the CCNY | Research Assistant | May 2024 - August 2024"
   }
 ]

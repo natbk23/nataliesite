@@ -1,0 +1,32 @@
+---
+title: "More About Natalie"
+image: human_tech.jpg
+toc: false
+about: 
+  template: broadside
+  image-width: 10em
+  image-shape: rounded
+  links:
+    - text: Github
+      href: https://github.com/natbk23/nataliesite
+      icon: github
+    - text: LinkedIn
+      href: www.linkedin.com/in/natalie-roston-758208259
+      icon: linkedin
+---
+
+Natalie is a current junior at Pomona College. When not conducting cognitive science research or designing on Figma, she can be found trying new recipes and pursuing her hobby in sustainable fashion.
+
+P.S. Natalie is hard-coding this site herself using R Studio, CSS, and HTML! This is her first attempt at web development, peruse the 'Designs' tab for Natalie's developed & beautiful creations.
+
+## Education
+
+Pomona College \| Claremont, CA \| Sept 2022 - June 2026
+
+BA in Cognitive Science, Concentrating in Human-Computer Interaction. Minors in Data Science and Politics
+
+## Experience
+
+Beni \| Product Intern \| September 2024 - Present
+
+VisNa Lab at the CCNY \| Research Assistant \| May 2024 - August 2024
