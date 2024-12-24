@@ -4,7 +4,9 @@ project:
 
 website:
   title: "nat on the web"
+  favicon: Vector 1.png
   navbar:
+    logo: Vector 1.png
     left:
       - href: index.qmd
         text: Home
@@ -44,6 +46,6 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-
+    
 editor: visual
 
