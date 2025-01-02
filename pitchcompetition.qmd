@@ -12,7 +12,7 @@ execute:
 
 ## The Pain Point
 
-What about language learners who aren’t as ambitious? Or have a time crunch?
+Duolingo's mission is to create the most effective language education tool in the world. But from personal experience in addition to conducting user interviews, this approach is neglecting the needs of many users. What about language learners who aren’t as ambitious? Or have a time crunch?
 
 Users should be able to specialize their learning.
 
@@ -45,6 +45,7 @@ They should have the ability to select 
 :::
 
 ## My Redesign
+
 ::: {.columns style="display: flex; flex-wrap: nowrap; justify-content: space-between;"}
 ::: {.column width="48%" style="padding-right: 1%; padding-left: 1%;"}
 ![](images/clipboard-4290558612.png){width="347"}
@@ -54,3 +55,5 @@ They should have the ability to select 
 ![](images/clipboard-3530143762.png){width="347"}
 :::
 :::
+
+This prototype was created using Sketch. View the flow here [here](https://www.sketch.com/s/fa967130-4eb5-4c51-96b7-3657af31e08f/v/G2P47Y/prototype/AE5663E8-6993-4D88-8C4F-2E359BE0DEA0/a/AE5663E8-6993-4D88-8C4F-2E359BE0DEA0?fullscreen=true) .
