@@ -10,9 +10,47 @@ execute:
   message: false
 ---
 
-```{=html}
-<iframe 
-    src="https://www.sketch.com/s/fa967130-4eb5-4c51-96b7-3657af31e08f/prototype/AE5663E8-6993-4D88-8C4F-2E359BE0DEA0/a/AE5663E8-6993-4D88-8C4F-2E359BE0DEA0?fullscreen=true" 
-    style="border: none; width: 100%; height: 800px;" 
-    allowfullscreen>
-</iframe>
+## The Pain Point
+
+What about language learners who aren’t as ambitious? Or have a time crunch?
+
+Users should be able to specialize their learning.
+
+They should have the ability to select 
+
+-   topics of interest
+
+-   timeframe 
+
+-   functional end goals
+
+## The Current Flow
+
+::: {.columns style="display: flex; flex-wrap: nowrap; justify-content: space-between;"}
+::: {.column width="24%" style="padding-right: 1%; padding-left: 1%;"}
+![](images/1DB0EE68-DF48-4213-93A7-685A3ACDF262_1_105_c.jpeg)
+:::
+
+::: {.column width="24%" style="padding-right: 1%; padding-left: 1%;"}
+![](images/487439DC-0E7C-426A-9AAE-4D0BE65D551B_1_105_c.jpeg)
+:::
+
+::: {.column width="24%" style="padding-right: 1%; padding-left: 1%;"}
+![](images/0CDBA028-ED8F-4210-829F-7E22E83066B0_1_105_c.jpeg)
+:::
+
+::: {.column width="24%" style="padding-right: 1%; padding-left: 1%;"}
+![](images/27DA8A9E-DA92-4201-83DE-12CBB49F2289_1_105_c.jpeg)
+:::
+:::
+
+## My Redesign
+::: {.columns style="display: flex; flex-wrap: nowrap; justify-content: space-between;"}
+::: {.column width="48%" style="padding-right: 1%; padding-left: 1%;"}
+![](images/clipboard-4290558612.png){width="347"}
+:::
+
+::: {.column width="48%" style="padding-right: 1%; padding-left: 1%;"}
+![](images/clipboard-3530143762.png){width="347"}
+:::
+:::
