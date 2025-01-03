@@ -26,16 +26,17 @@ website:
             href: clientpresentation.qmd
       - text: Designs
         menu: 
-          - text: "User-Centered Community Experience Design"
-            href: HCDexperience.qmd
-          - text: "Alchohol Safety App Figma"
-            href: 2024hackathon.qmd
-          - text: "Campus Rideshare App Wireframe"
-            href: Sparkathon24.qmd
-          - text: "Alumni Connectivity Wireframe"
-            href: paiproject.qmd
           - text: "Duolingo Product Design"
             href: pitchcompetition.qmd
+          - text: "User-Centered Community Experience Design"
+            href: HCDexperience.qmd
+          - text: "Campus Rideshare App Wireframe"
+            href: Sparkathon24.qmd
+          - text: "Alchohol Safety App Figma"
+            href: 2024hackathon.qmd
+          - text: "Alumni Connectivity Wireframe"
+            href: paiproject.qmd
+          
       - text: Research
         href: aestheticsresearch.qmd
       - text: About
