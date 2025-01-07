@@ -11,17 +11,21 @@ execute:
   warning: false
   message: false
 ---
+
 ## The Product
-U-Turn has two features that target the concept of Waste. Firstly, the rental feature allows students to
-lend cars to other students for a highly discounted rate. This mitigates economic hardship for the driver
-while keeping car usage circular within the college community. The second feature is a carpool option, an
-innovative concept that allows for students to pay for a single seat in a car already going to that destination.
-This way, students can lower carbon emissions by sharing transportation. It is also an accessible and
-cheap option for someone who might not have a car or license.
+
+U-Turn has two features that target the concept of Waste.
+
+1.  The rental feature allows students to lend cars to other students for a highly discounted rate.
+    -   This mitigates economic hardship for the driver while keeping car usage circular within the college community.
+2.  The second feature is a carpool option, an innovative concept that allows for students to pay for a single seat in a car already going to that destination.
+    -   This way, students can lower carbon emissions by sharing transportation. It is also an accessible and cheap option for someone who might not have a car or license.
 
 ## The Prototype
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/9CE6v5epwauEwyovqeH81s/Uturn-Sparkathon?node-id=3-40&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A40&embed-host=share" allowfullscreen></iframe>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/9CE6v5epwauEwyovqeH81s/Uturn-Sparkathon?node-id=3-40&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=3%3A40&amp;embed-host=share" allowfullscreen>
+
+</iframe>
 
 ## My Role
 
